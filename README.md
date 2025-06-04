@@ -2,6 +2,7 @@
 
 This repository is for building a Rust implementation of the delta-neutral market making strategy described in `RESEARCH.md`. The strategy exclusively uses Deribit data and aims to maintain near zero BTC exposure while collecting the bid/ask spread.
 
+See [PROJECT_POLICY.md](PROJECT_POLICY.md) for contribution workflow and task structure rules.
 ## Strategy Summary
 
 - The research proposes **passive quoting** enhanced with occasional hybrid actions. All signals come from Deribit order books and trades, without external feeds. The goal is to "combine passive quoting (earning the bid-ask spread by resting limit orders) with hybrid tactics" while watching microstructure signals such as depth, top-of-book moves and recent trades【F:RESEARCH.md†L5-L16】.
