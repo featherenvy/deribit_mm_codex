@@ -14,15 +14,24 @@ See [PROJECT_POLICY.md](PROJECT_POLICY.md) for contribution workflow and task st
 
 ## Project Goals for the AI
 
-1. **Rust codebase** – implement the strategy using async Rust (e.g. Tokio).
-2. **Deribit connectivity** – subscribe to WebSocket feeds for order books and trades and send orders through the HTTP or RPC API.
-3. **Modules to implement**:
-   - `exchange`: WebSocket client and REST/RPC wrapper
-   - `strategy`: quoting logic, inventory skew, volatility-based spread
-   - `orders`: state tracking and event-driven management
-   - `risk`: inventory limits, hedging logic and kill-switch thresholds
-4. **Configuration** – expose parameters such as `base_spread`, `γ`, order size and risk thresholds via a config file.
-5. **Testing and simulation** – include basic unit tests and allow running on Deribit testnet first.
+The backlog in `docs/delivery/backlog.md` breaks the project into one Product
+Backlog Item (PBI&nbsp;1) with seven tasks. These tasks guide the initial
+implementation phase:
+
+1. **Setup Deribit API connectivity** – implement WebSocket and HTTP wrappers
+   ([1-1](docs/delivery/1/1-1.md)).
+2. **Implement quoting algorithm** – compute bid/ask prices using inventory and
+   volatility signals ([1-2](docs/delivery/1/1-2.md)).
+3. **Implement order management** – event-driven placement and cancellation of
+   orders ([1-3](docs/delivery/1/1-3.md)).
+4. **Risk management and hedging** – enforce inventory limits and optional cross
+   instrument hedge ([1-4](docs/delivery/1/1-4.md)).
+5. **Execution and latency tactics** – latency-aware quoting and adverse
+   selection protections ([1-5](docs/delivery/1/1-5.md)).
+6. **Configuration and logging** – configuration file and structured logging
+   framework ([1-6](docs/delivery/1/1-6.md)).
+7. **E2E CoS Test** – integration test verifying acceptance criteria
+   ([1-7](docs/delivery/1/1-7.md)).
 
 The research document contains pseudocode for order management loops and additional details that should guide the implementation【F:RESEARCH.md†L136-L164】.
 
